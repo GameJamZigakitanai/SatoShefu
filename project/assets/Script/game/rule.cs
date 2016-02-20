@@ -15,11 +15,29 @@ public class rule : MonoBehaviour {
 	//--------------------------------------------------------------------
 	[SerializeField]
 	private string[] tagList;     // ルールリスト
+	[SerializeField]
 	private int      mainScore;   // メインスコア
+	[SerializeField]
 	private int[]    subScore;    // サブスコア(配列数 = サブ条件数)
  
 	private RULE   main; // 必須条件
 	private RULE[] sub;  // その他
+
+	// プロパティ
+	//--------------------------------------------------------------------
+	public string   Main { get { return main.tag; } }
+	public string[] Sub
+	{
+		get
+		{
+			string[] re = new string[sub.Length];
+			for (int i=0; i < sub.Length; ++i)
+			{
+				re[i] = sub[i].tag;
+			}
+			return re;
+		}
+	}
 
 	// @brief  : 初期化
 	//--------------------------------------------------------------------
@@ -42,18 +60,31 @@ public class rule : MonoBehaviour {
 		}
 	}
 
-	//// @brief  : 材料のタグリストからスコアを生成する
-	//// @param  : 材料
-	//// @return : スコア
-	////--------------------------------------------------------------------
-	//public int CreateZairyouScore(zairyou _zairyou)
-	//{
-	//	int re = 0;
-	//	// メイン条件の確認
-	//	foreach
-	//}
+	// @brief  : 材料のタグリストからスコアを生成する
+	// @param  : 材料
+	// @return : スコア
+	//--------------------------------------------------------------------
+	public int CreateZairyouScore(zairyou _zairyou)
+	{
+		int re = 0;
 
-		// @brief  : 条件の生成
+		// 条件の確認
+		for(var i = 0; i < _zairyou.Tags.Length; ++i)
+		{
+			// メイン
+			if (_zairyou.Tags[i] == main.tag) re += main.score;
+
+			// サブ
+			foreach (var j in sub)
+			{
+				if (_zairyou.Tags[i] == j.tag) re += j.score;
+			}
+		}
+
+		return re;
+    }
+
+	// @brief  : 条件の生成
 	// @param  : スコア
 	//--------------------------------------------------------------------
 	private RULE CreateRule(int _score)
