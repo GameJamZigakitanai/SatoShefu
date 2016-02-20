@@ -16,7 +16,7 @@ public class zairyouFactory : MonoBehaviour {
 
 	// @brief  : 初期化
 	//--------------------------------------------------------------------
-	void Start ()
+	void OnEnable ()
 	{
 		// 条件コンポーネントの取得
 		clear_rule = GetComponent<rule>();
@@ -24,4 +24,9 @@ public class zairyouFactory : MonoBehaviour {
 		// ルールに沿った材料の数分だけ先に作成
 	}
 
+	//// @brief  : ルールに沿ったオブジェクトの生成
+	////--------------------------------------------------------------------
+	//public GameObject CreateRule()
+	//{
+	//}
 }

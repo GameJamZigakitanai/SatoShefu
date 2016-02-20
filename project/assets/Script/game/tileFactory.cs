@@ -19,19 +19,17 @@ public class tileFactory : MonoBehaviour
 
 	// @brief  : 初期化
 	//--------------------------------------------------------------------
-	void Awake()
+	void Start()
 	{
 		// 画面の座標を取得する
-		Rect screen = new Rect();
+		Rect screen;
 		{
 			var camera = Camera.main;
-			var top_left = camera.ScreenToWorldPoint(Vector3.zero);
+			Vector2 left_bottom  = camera.ViewportToWorldPoint(Vector3.zero);
+			Vector2 right_top = camera.ViewportToWorldPoint(Vector3.one);
+            Vector2 screen_size = new Vector2(right_top.x-left_bottom.x,left_bottom.y - right_top.y);
 
-			screen.x =  top_left.x;
-			screen.y = -top_left.y;
-
-			var bottom_light = camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0.0f));
-			screen.size = new Vector2(bottom_light.x - top_left.x, -bottom_light.y - top_left.y);
+			screen = new Rect(new Vector2(left_bottom.x,right_top.y), screen_size);
 		}
 
 		// タイルの大きさを作る
