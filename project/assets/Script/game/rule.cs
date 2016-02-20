@@ -42,16 +42,16 @@ public class rule : MonoBehaviour {
 		}
 	}
 
-	// @brief  : 材料のタグリストからスコアを生成する
-	// @param  : 材料
-	// @return : スコア
-	//--------------------------------------------------------------------
-	public int CreateZairyouScore(zairyou _zairyou)
-	{
-		int re = 0;
-		// メイン条件の確認
-		foreach
-	}
+	//// @brief  : 材料のタグリストからスコアを生成する
+	//// @param  : 材料
+	//// @return : スコア
+	////--------------------------------------------------------------------
+	//public int CreateZairyouScore(zairyou _zairyou)
+	//{
+	//	int re = 0;
+	//	// メイン条件の確認
+	//	foreach
+	//}
 
 		// @brief  : 条件の生成
 	// @param  : スコア
