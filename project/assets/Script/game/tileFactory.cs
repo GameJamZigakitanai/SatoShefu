@@ -17,10 +17,19 @@ public class tileFactory : MonoBehaviour
 	[SerializeField]
 	private GameObject prefab;          // タイルのプレハブ
 
+	private float bottom;          // 最下
+
+	private int numberOfTiles;
+
+	// プロパティ
+	//--------------------------------------------------------------------
+	public float Bottom{get{return bottom;}}
+
 	// @brief  : 初期化
 	//--------------------------------------------------------------------
 	void Start()
 	{
+		numberOfTiles = 0;
 		// 画面の座標を取得する
 		Rect screen;
 		{
@@ -52,12 +61,15 @@ public class tileFactory : MonoBehaviour
 			for (int x = 0; x < width_tile; ++x)
 			{
 				Create(pos);
+				//Debug.Log (numberOfTiles);
 				pos.x += size.x + margin_tile_to_tile;
 			}
 			pos.y -= size.y + margin_tile_to_tile;
 			pos.x  = init_pos.x;
 		}
 
+		bottom = pos.y;
+			
 		// 役割が終わったので消える
 		Destroy(this);
 	}
@@ -65,10 +77,22 @@ public class tileFactory : MonoBehaviour
 	// @brief  : タイルを生成する
 	// @param  : 位置
 	//--------------------------------------------------------------------
-	private void Create(Vector2 _pos)
+	public void Create(Vector2 _pos)
 	{
-		var new_tile = GameObject.Instantiate(prefab);
+		GameObject new_tile = GameObject.Instantiate(prefab);
+		tileItem temp = new_tile.GetComponent<tileItem>();
+		temp.number = numberOfTiles;
+		numberOfTiles = numberOfTiles + 1;
 		new_tile.transform.parent = this.transform;
 		new_tile.transform.position = _pos;
 	}
+
+	/*
+	private void CreateNabe(Vector2 _pos)
+	{
+		var new_tile = GameObject.Instantiate(nabe);
+		new_tile.transform.parent = this.transform;
+		new_tile.transform.position = _pos;
+	}
+	*/
 }
