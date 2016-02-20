@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class nabe : MonoBehaviour {
 
     // メンバ変数
     //--------------------------------------------------------------------
     [SerializeField]
-    private string[] tags;	// 鍋に入れた材料の配列
-
+    // 鍋に入れた材料の配列（ゲームオブジェクトで持つ）
+    private List<GameObject> zairyous = new List<GameObject>();
 
     // 初期化
     //--------------------------------------------------------------------
@@ -21,15 +22,13 @@ public class nabe : MonoBehaviour {
 	
 	}
 
-    // 離したときに材料を追加するための衝突処理
+    // 材料を入れ込む処理
     //--------------------------------------------------------------------
-    void OnCollisionEnter2D(Collision2D collision)
+    void InsertZairyou(GameObject gobj)
     {
-        // TODO 衝突している、かつフリック操作が”離している”フラグが立っている時のみ判定
-        //if( FlickOut(適当な変数名) == true )
-        //{
-        // 衝突したオブジェクトが材料ならば、タグを追加する
-            
-        //}
+        // 衝突したオブジェクトを追加する
+        zairyous.Add(gobj);
+        // 材料を追加したことを通知する処理
+        // TODO SendMessage("");
     }
 }
