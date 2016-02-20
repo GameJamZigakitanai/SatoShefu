@@ -85,7 +85,7 @@ public class tileFactory : MonoBehaviour
 		int tempNum = Random.Range (0, InputManager.ingredients.Length-1);
 		//Debug.Log (tempNum);
 		temp.tag = InputManager.ingredients[tempNum];
-		temp.GetComponent<SpriteRenderer> ().sprite = Resources.Load(InputManager.ingredients[tempNum], typeof(Sprite)) as Sprite;
+		temp.GetComponent<SpriteRenderer> ().sprite = Resources.Load("ingredients/"+InputManager.ingredients[tempNum], typeof(Sprite)) as Sprite;
 		numberOfTiles = numberOfTiles + 1;
 		new_tile.transform.parent = this.transform;
 		new_tile.transform.position = _pos;
