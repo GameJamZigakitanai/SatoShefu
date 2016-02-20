@@ -102,6 +102,28 @@ public class rule : MonoBehaviour {
 		return re;
     }
 
+	// @brief  : その材料はルールに属しているのか
+	// @param  : 材料
+	// @return : スコア
+	//--------------------------------------------------------------------
+	public bool CheakIsScore(zairyou _zairyou)
+	{
+		// 条件の確認
+		for (var i = 0; i < _zairyou.Tags.Length; ++i)
+		{
+			// メイン
+			if (_zairyou.Tags[i] == main.tag) return true;
+
+			// サブ
+			foreach (var j in sub)
+			{
+				if (_zairyou.Tags[i] == j.tag) return true;
+			}
+		}
+
+		return false;
+	}
+
 	// @brief  : 条件の生成
 	// @param  : スコア
 	//--------------------------------------------------------------------

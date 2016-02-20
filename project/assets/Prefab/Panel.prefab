@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   min_rule_zairyou: 0
-  zairyous: []
+  prefabs: []
 --- !u!114 &11479294
 MonoBehaviour:
   m_ObjectHideFlags: 1
