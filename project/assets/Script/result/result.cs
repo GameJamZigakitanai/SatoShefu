@@ -18,7 +18,7 @@ public class result : TempSingletonMonoBehaviour<result>
 
     // スコアの初期化
     //--------------------------------------------------------------------
-    void initScore()
+    public void initScore()
     {
         score = 0;
     }
