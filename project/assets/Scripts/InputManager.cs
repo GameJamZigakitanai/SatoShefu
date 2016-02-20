@@ -7,6 +7,20 @@ public class InputManager : MonoBehaviour
 	private GameObject draggedObject;
 	private Vector2 touchOffset;
 
+	static public string[] ingredients = new string[] {
+		"beef",
+		"carrot",
+		"chicken",
+		"honey",
+		"mushroom",
+		"onion",
+		"pork",
+		"potato",
+		"shrimp",
+		"spice",
+		"tomato"
+	};
+
 	private bool drag;
 	Vector3 oldPosition;
 	tileItem tempTile;
@@ -97,7 +111,9 @@ public class InputManager : MonoBehaviour
 		draggedObject.transform.localScale = new Vector3(1.5f, 1.5f, 1);
 		if (draggedObject.transform.position.y < tileFactory.Bottom) {
 			tempTile = draggedObject.GetComponent<tileItem>();
-			Debug.Log(tempTile.number);
+			int tempNum = Random.Range (0, InputManager.ingredients.Length-1);
+			tempTile.tag = InputManager.ingredients[tempNum];
+			tempTile.GetComponent<SpriteRenderer> ().sprite = Resources.Load(InputManager.ingredients[tempNum], typeof(Sprite)) as Sprite;
 		}
 		draggedObject.transform.position = oldPosition;
 	}
