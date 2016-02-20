@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class rule : MonoBehaviour {
 
@@ -19,9 +19,12 @@ public class rule : MonoBehaviour {
 	private int      mainScore;   // メインスコア
 	[SerializeField]
 	private int[]    subScore;    // サブスコア(配列数 = サブ条件数)
- 
+	[SerializeField]
+	private ruleText Text;    // テキスト
+
 	private RULE   main; // 必須条件
 	private RULE[] sub;  // その他
+	private List<string> tag_not_used;     // そのタグはすでにルールで使用されていないもののリスト
 
 	// プロパティ
 	//--------------------------------------------------------------------
@@ -43,6 +46,13 @@ public class rule : MonoBehaviour {
 	//--------------------------------------------------------------------
 	void Awake ()
 	{
+		// ルールの数だけ初期化
+		tag_not_used = new List<string>();
+		foreach (var i in tagList)
+		{
+			tag_not_used.Add(i);
+		}
+
 		// メインルールの生成
 		main = CreateRule(mainScore);
 
@@ -50,14 +60,22 @@ public class rule : MonoBehaviour {
 		sub = new RULE[subScore.Length];
 		for (int i = 0; i < subScore.Length; ++i)
 		{
-			// サブルールは被ってはいけない
-			bool is_clear = false;
-			while (is_clear)
-			{
-				sub[i] = CreateRule(subScore[i]);
-				if (IsUnique(sub[i].tag)) is_clear = true;
-			}
+			sub[i] = CreateRule(subScore[i]);
 		}
+	}
+
+	// @brief  : 初期化
+	//--------------------------------------------------------------------
+	void Start()
+	{
+		// テキストの作成
+		var text = new string(main.tag.ToCharArray());
+		foreach (var i in sub)
+		{
+			text += i.tag;
+		}
+		text += " カレー";
+		Text.Txt = text;
 	}
 
 	// @brief  : 材料のタグリストからスコアを生成する
@@ -89,26 +107,14 @@ public class rule : MonoBehaviour {
 	//--------------------------------------------------------------------
 	private RULE CreateRule(int _score)
 	{
-		RULE re;
-		re.tag   = tagList[Random.Range(0, tagList.Length)];
-		re.score = _score;
+		RULE re = new RULE();
+
+		int i          = Random.Range(0, tag_not_used.Count);
+        re.tag         = tag_not_used[i];
+        re.score       = _score;
+
+		tag_not_used.Remove(re.tag);
+
 		return re;
-	}
-
-	// @brief  : 指定したルールが設定上被っていないか
-	// @param  : かぶっていない(true),かぶっている(false)
-	//--------------------------------------------------------------------
-	private bool IsUnique(string _tag)
-	{
-		// メインルールがかぶっていないか？
-		if (main.tag == _tag) return false;
-
-		// サブルールがかぶっていないか
-		for (int i = 0; i < sub.Length; ++i)
-		{
-			if (sub[i].tag == _tag) return false;
-		}
-
-		return true;
 	}
 }

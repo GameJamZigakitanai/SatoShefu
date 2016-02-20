@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 497446}
   - 114: {fileID: 11487282}
   - 114: {fileID: 11479294}
+  - 114: {fileID: 11466724}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -29,6 +30,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11466724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd672ffd0fcd5ea4f9ce05cb339981f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  min_rule_zairyou: 0
+  zairyous: []
 --- !u!114 &11479294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,6 +77,7 @@ MonoBehaviour:
   - "\u7518\u3044"
   mainScore: 10
   subScore: 0500000005000000
+  Text: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
