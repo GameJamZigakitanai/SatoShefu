@@ -6,7 +6,7 @@ public class debugSceneChenge : MonoBehaviour {
 	// メンバ変数
 	readonly string[] SceneName =	// シーン名
 	{
-		"Title","Game","Resul"
+		"Title","Game","Result"
 	};
 
 	// 初期化

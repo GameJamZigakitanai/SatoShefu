@@ -5,8 +5,8 @@ public class freezeAspect : MonoBehaviour {
 
 	// メンバ変数
     //--------------------------------------------------------------------
-    readonly  float  width = 640.0f;   // 幅
-    readonly  float  height = 1136.0f;  // 高さ
+    readonly  float  width  = 750.0f;   // 幅
+    readonly  float  height = 1334.0f;  // 高さ
     private Camera cam;  // カメラ
 
 	// @brief  : 初期化
