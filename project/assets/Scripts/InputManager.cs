@@ -24,13 +24,12 @@ public class InputManager : MonoBehaviour
 	private bool drag;
 	Vector3 oldPosition;
 	tileItem tempTile;
-
-	tileFactory tileFactory;
+	[SerializeField]
+	private tileFactory tileFactory;
 
 	void Start()
 	{
 		drag = false;
-		tileFactory = GameObject.Find ("PanelTile").GetComponent<tileFactory>();
 	}
 
 	void Update ()

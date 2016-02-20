@@ -7,6 +7,6 @@ public class scoreText : MonoBehaviour {
     // スコアの表示
     //--------------------------------------------------------------------
     void OnEnable () {
-        this.GetComponent<Text>().text = "Score:" + result.Instance.Score;
+        this.GetComponent<Text>().text = "Score:\n  " + result.Instance.Score;
     }
 }
