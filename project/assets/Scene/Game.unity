@@ -622,52 +622,44 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11479294, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
-      propertyPath: sprite.Array.size
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 497446, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
+    - target: {fileID: 499992, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 497446, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
+    - target: {fileID: 499992, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 497446, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
+    - target: {fileID: 499992, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 497446, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
+    - target: {fileID: 499992, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 497446, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
+    - target: {fileID: 499992, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 497446, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
+    - target: {fileID: 499992, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 497446, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
+    - target: {fileID: 499992, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 497446, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
+    - target: {fileID: 499992, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 11487282, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
+    - target: {fileID: 11469710, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
       propertyPath: Text
       value: 
       objectReference: {fileID: 533877636}
-    - target: {fileID: 185358, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
-      propertyPath: m_Name
-      value: PanelTile
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 8fff41d6f57a75c419f677789150ca0a, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2145328651
 GameObject:

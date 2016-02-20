@@ -24,12 +24,13 @@ public class InputManager : MonoBehaviour
 	private bool drag;
 	Vector3 oldPosition;
 	tileItem tempTile;
-	[SerializeField]
+
 	private tileFactory tileFactory;
 
 	void Start()
 	{
 		drag = false;
+		tileFactory = GameObject.Find ("PanelTile").GetComponent<tileFactory> ();
 	}
 
 	void Update ()
@@ -108,9 +109,11 @@ public class InputManager : MonoBehaviour
 	{
 		draggingItem = false;
 		draggedObject.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+		Debug.Log (draggedObject.transform.position.y + ", " + tileFactory.Bottom);
 		if (draggedObject.transform.position.y < tileFactory.Bottom) {
 			tempTile = draggedObject.GetComponent<tileItem>();
 			int tempNum = Random.Range (0, InputManager.ingredients.Length-1);
+			Debug.Log (tempNum);
 			tempTile.tag = InputManager.ingredients[tempNum];
 			tempTile.GetComponent<SpriteRenderer> ().sprite = Resources.Load(InputManager.ingredients[tempNum], typeof(Sprite)) as Sprite;
 		}
