@@ -39,8 +39,8 @@ public class nabe : MonoBehaviour {
 
 			for (int i=0; i < zairyou.Count; ++i)
 			{
-				// スコア計算
-				score = zairyou[i].Score;
+                // スコア計算
+                score += zairyou[i].Score;
 
 				// 材料リストの作成
 				data[i].is_rule = zairyou[i].ISRule;
