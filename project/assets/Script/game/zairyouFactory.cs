@@ -43,7 +43,9 @@ public class zairyouFactory : MonoBehaviour {
 		if (rule_zairyou_count <= min_rule_zairyou) return CreateRule();
 
 		var re = GameObject.Instantiate(prefabs[Random.Range(0, prefabs.Length)]);
-		re.GetComponent<zairyou>().Rule = clear_rule;
+		var script = re.GetComponent<zairyou>();
+		script.Rule = clear_rule;
+		script.ISRule = false;
 		for (int i = 0; i < rule_object.Count; ++i)
 		{
 			if (rule_object[i].GetType() == re.GetType())

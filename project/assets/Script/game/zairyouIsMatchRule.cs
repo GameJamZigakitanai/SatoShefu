@@ -11,6 +11,13 @@ public class zairyouIsMatchRule : MonoBehaviour {
 	//--------------------------------------------------------------------
 	public zairyouFactory Factory { set { factory = value; } }
 
+	// @brief  : オブジェクト生成時
+	//--------------------------------------------------------------------
+	void Awake()
+	{
+		GetComponent<zairyou>().ISRule = true;
+	}
+
 	// @brief  : オブジェクト削除時
 	//--------------------------------------------------------------------
 	void OnDestroy()
