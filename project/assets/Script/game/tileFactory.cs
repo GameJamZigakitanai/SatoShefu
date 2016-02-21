@@ -16,6 +16,8 @@ public class tileFactory : MonoBehaviour
 	private float margin_tile_to_tile;  // タイルとタイルの間の幅
 	[SerializeField]
 	private GameObject prefab;          // タイルのプレハブ
+	[SerializeField]
+	private GameObject prefab2;          // タイルのプレハブ
 
 	private float bottom;          // 最下
 
@@ -80,6 +82,7 @@ public class tileFactory : MonoBehaviour
 	public void Create(Vector2 _pos)
 	{
 		GameObject new_tile = GameObject.Instantiate(prefab);
+		GameObject new_tile2 = GameObject.Instantiate(prefab2);
 		tileItem temp = new_tile.GetComponent<tileItem>();
 		temp.number = numberOfTiles;
 		int tempNum = Random.Range (0, InputManager.ingredients.Length-1);
@@ -89,6 +92,8 @@ public class tileFactory : MonoBehaviour
 		numberOfTiles = numberOfTiles + 1;
 		new_tile.transform.parent = this.transform;
 		new_tile.transform.position = _pos;
+		new_tile2.transform.parent = this.transform;
+		new_tile2.transform.position = _pos;
 	}
 
 	/*
