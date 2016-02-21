@@ -82,6 +82,10 @@ public class tileFactory : MonoBehaviour
 		GameObject new_tile = GameObject.Instantiate(prefab);
 		tileItem temp = new_tile.GetComponent<tileItem>();
 		temp.number = numberOfTiles;
+		int tempNum = Random.Range (0, InputManager.ingredients.Length-1);
+		//Debug.Log (tempNum);
+		temp.tag = InputManager.ingredients[tempNum];
+		temp.GetComponent<SpriteRenderer> ().sprite = Resources.Load("ingredients/"+InputManager.ingredients[tempNum], typeof(Sprite)) as Sprite;
 		numberOfTiles = numberOfTiles + 1;
 		new_tile.transform.parent = this.transform;
 		new_tile.transform.position = _pos;

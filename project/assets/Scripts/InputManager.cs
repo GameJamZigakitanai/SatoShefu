@@ -7,15 +7,66 @@ public class InputManager : MonoBehaviour
 	private GameObject draggedObject;
 	private Vector2 touchOffset;
 
+	/*
+	static public string[] ingredients = new string[] {
+		"beef",
+		"carrot",
+		"chicken",
+		"honey",
+		"mushroom",
+		"onion",
+		"pork",
+		"potato",
+		"shrimp",
+		"spice",
+		"tomato"
+	};
+	*/
+
+	//日本語がstringとして認識できない
+
+	static public int score;
+
+	static public string[] ingredients = new string[] {
+		"牛肉",
+		"にんじん",
+		"鶏肉",
+		"ハチミツ",
+		"きのこ",
+		"玉葱",
+		"豚肉",
+		"じゃがいも",
+		"えび",
+		"とうがらし",
+		"トマト"
+	};
+
+	static public string[] tagIngre = new string[] {
+		"肉",
+		"野菜",
+		"肉",
+		"甘い",
+		"野菜",
+		"野菜",
+		"肉",
+		"野菜",
+		"肉",
+		"辛い",
+		"野菜"
+	};
+
+
 	private bool drag;
 	Vector3 oldPosition;
 	tileItem tempTile;
-	[SerializeField]
+
 	private tileFactory tileFactory;
 
 	void Start()
 	{
 		drag = false;
+		score = 0;
+		tileFactory = GameObject.Find ("PanelTile").GetComponent<tileFactory> ();
 	}
 
 	void Update ()
@@ -94,9 +145,13 @@ public class InputManager : MonoBehaviour
 	{
 		draggingItem = false;
 		draggedObject.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+		Debug.Log (draggedObject.transform.position.y + ", " + tileFactory.Bottom);
 		if (draggedObject.transform.position.y < tileFactory.Bottom) {
 			tempTile = draggedObject.GetComponent<tileItem>();
-			Debug.Log(tempTile.number);
+			int tempNum = Random.Range (0, InputManager.ingredients.Length-1);
+			Debug.Log (tempNum);
+			tempTile.tag = InputManager.ingredients[tempNum];
+			tempTile.GetComponent<SpriteRenderer> ().sprite = Resources.Load("ingredients/"+InputManager.ingredients[tempNum], typeof(Sprite)) as Sprite;
 		}
 		draggedObject.transform.position = oldPosition;
 	}
