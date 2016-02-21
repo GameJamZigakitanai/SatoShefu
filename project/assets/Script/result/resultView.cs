@@ -36,7 +36,6 @@ public class resultView : MonoBehaviour
         // TODO:鍋に入っている材料の分だけ表示させる処理
         for (int i = 0; i < result.Instance.zairyo.Length; i++)
         {
-
             Debug.Log(result.Instance.zairyo[i].sprite);
             SpriteRenderer gobj = new GameObject("入れた材料:" + i).AddComponent<SpriteRenderer>();
             gobj.sprite = result.Instance.zairyo[i].sprite;
@@ -47,6 +46,7 @@ public class resultView : MonoBehaviour
             Vector3 pos = new Vector3(init_pos.x, init_pos.y, 1.0f);
 
             gobj.transform.position = pos;
+            gobj.sortingOrder = 1;
 
             //TODO 材料がルールにあっていなかったら×印をつける
             // とりあえずi%2==0 なら×印つけてみる
@@ -56,7 +56,7 @@ public class resultView : MonoBehaviour
                 gobj2.sprite = result.Instance.zairyo[0].sprite;
 
                 gobj2.transform.position = new Vector3(pos.x, pos.y, 1.0f);
-                gobj2.sortingOrder = 1;
+                gobj2.sortingOrder = 10;
             }
         }
     }
