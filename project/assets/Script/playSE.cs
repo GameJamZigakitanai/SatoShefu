@@ -8,9 +8,13 @@ public class playSE : MonoBehaviour {
     public  float     pitch = 1.0f;   // ピッチ
     private SE        se;             // 鳴らす本体
 
-    // @brief  : シーン開始時
-    //--------------------------------------------------------------------
-    void Awake()
+	// プロパティ
+	//--------------------------------------------------------------------
+	public string ClipName { get { return clip.name; } }
+
+	// @brief  : シーン開始時
+	//--------------------------------------------------------------------
+	void Awake()
     {
         se = audioManager.LoadSE(clip,pitch);
     }

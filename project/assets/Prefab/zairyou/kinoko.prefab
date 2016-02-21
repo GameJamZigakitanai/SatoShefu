@@ -11,6 +11,8 @@ GameObject:
   - 212: {fileID: 21246116}
   - 61: {fileID: 6105976}
   - 114: {fileID: 11430534}
+  - 114: {fileID: 11456128}
+  - 114: {fileID: 11408342}
   m_Layer: 0
   m_Name: kinoko
   m_TagString: Untagged
@@ -44,6 +46,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &11408342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96474e1ef515942f19ecf8dd3f47f207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: f4d0b1ce17964d34f95ab258b8d1b200, type: 3}
+  pitch: 1
 --- !u!114 &11430534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -58,6 +73,19 @@ MonoBehaviour:
   tags:
   - "\u3058\u3083\u304C\u3044\u3082"
   - "\u91CE\u83DC"
+--- !u!114 &11456128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96474e1ef515942f19ecf8dd3f47f207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 774e9eb6c801d864db78c480b5dce515, type: 3}
+  pitch: 1
 --- !u!212 &21246116
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -112,6 +140,10 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f4d0b1ce17964d34f95ab258b8d1b200, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155754}

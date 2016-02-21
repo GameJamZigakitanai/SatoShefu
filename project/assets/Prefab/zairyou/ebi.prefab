@@ -11,6 +11,8 @@ GameObject:
   - 212: {fileID: 21205160}
   - 61: {fileID: 6112164}
   - 114: {fileID: 11404172}
+  - 114: {fileID: 11494814}
+  - 114: {fileID: 11445198}
   m_Layer: 0
   m_Name: ebi
   m_TagString: Untagged
@@ -58,6 +60,32 @@ MonoBehaviour:
   tags:
   - "\u3048\u3073"
   - "\u6D77\u9BAE"
+--- !u!114 &11445198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96474e1ef515942f19ecf8dd3f47f207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: f4d0b1ce17964d34f95ab258b8d1b200, type: 3}
+  pitch: 1
+--- !u!114 &11494814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96474e1ef515942f19ecf8dd3f47f207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 774e9eb6c801d864db78c480b5dce515, type: 3}
+  pitch: 1
 --- !u!212 &21205160
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -99,6 +127,10 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f4d0b1ce17964d34f95ab258b8d1b200, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 107524}
