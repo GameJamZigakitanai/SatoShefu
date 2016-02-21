@@ -28,7 +28,7 @@ public class zairyouFactory : MonoBehaviour {
 		foreach (var i in prefabs)
 		{
 			var script = i.GetComponent<zairyou>();
-			if (clear_rule.CheakIsScore(script)) rule_object.Add(i);
+			if (clear_rule.CheakIsScore(script) == true) rule_object.Add(i);
 		}
 
 		// タイルファクトリをenableにする
@@ -45,17 +45,8 @@ public class zairyouFactory : MonoBehaviour {
 		var re = GameObject.Instantiate(prefabs[Random.Range(0, prefabs.Length)]);
 		var script = re.GetComponent<zairyou>();
 		script.Rule = clear_rule;
-		script.ISRule = false;
-		for (int i = 0; i < rule_object.Count; ++i)
-		{
-			if (rule_object[i].GetType() == re.GetType())
-            {
-				++rule_zairyou_count;
-				var match = re.AddComponent<zairyouIsMatchRule>();
-				match.Factory = this;
-				return re;
-			}
-        }
+		script.ISRule = clear_rule.CheakIsScore(script);
+		if (script.ISRule) re.AddComponent<zairyouIsMatchRule>();
 		return re;
 	}
 
