@@ -8,35 +8,35 @@ public class rankText : MonoBehaviour {
     void OnEnable()
     {
         int score = result.Instance.Score;
-
+        
         //講評一覧を表示
         //（くそまずい:E）
-        if (score < 100)
+        if (score < result.SCORERANKS[0])
         {
             this.GetComponent<Text>().text = "F";
         }
         //(まずい）
-        else if (score < 200)
+        else if (score < result.SCORERANKS[1])
         {
             this.GetComponent<Text>().text = "E";
         }
         //(おいしくない）
-        else if (score < 300)
+        else if (score < result.SCORERANKS[2])
         {
             this.GetComponent<Text>().text = "D";
         }
         //(ふつう）
-        else if (score < 400)
+        else if (score < result.SCORERANKS[3])
         {
             this.GetComponent<Text>().text = "C";
         }
         //(おいしい）
-        else if (score < 500)
+        else if (score < result.SCORERANKS[4])
         {
             this.GetComponent<Text>().text = "B";
         }
         //(超美味しい）
-        else if (score < 600)
+        else if (score < result.SCORERANKS[5])
         {
             this.GetComponent<Text>().text = "A";
         }

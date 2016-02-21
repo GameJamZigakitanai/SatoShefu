@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class result : TempSingletonMonoBehaviour<result>
+using System;      //(for Array)
+using System.Collections.ObjectModel;    //(for ReadOnlyCollection)
+
+    public class result : TempSingletonMonoBehaviour<result>
 {
 	// 材料データ
 	//--------------------------------------------------------------------
@@ -16,7 +19,17 @@ public class result : TempSingletonMonoBehaviour<result>
 	[SerializeField]
     private int score;			// スコア
 
-	private ZAIRYO[] zairyo;	// 材料
+	public ZAIRYO[] zairyo;    // 材料
+
+    //スコアランクの点数
+    public static readonly ReadOnlyCollection<int> SCORERANKS = Array.AsReadOnly(new int[] {
+        100,    //以下ならくそまずい
+        200,    //まずい
+        300,    //微妙
+        400,    //普通
+        500,    //おいしい
+        600    //超美味しい
+    });
 
     // プロパティ
     //--------------------------------------------------------------------
