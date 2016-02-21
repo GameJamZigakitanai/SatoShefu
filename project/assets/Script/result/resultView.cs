@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class resultView : MonoBehaviour
@@ -9,16 +10,33 @@ public class resultView : MonoBehaviour
 
     // @brief  : 表示
     //--------------------------------------------------------------------
-    void OnEnable()
+    void Awake()
     {
         Debug.Log("result Start");
+		//autoLayoutSetting();
         viewZairyous();
         viewShefu();
     }
 
-    // @brief  : 鍋に入れた食材の表示
-    //--------------------------------------------------------------------
-    void viewZairyous()
+	//// @brief  : オートレイアウトの調整
+	////--------------------------------------------------------------------
+	//void autoLayoutSetting()
+	//{
+	//	var rect = GetComponent<RectTransform>();
+	//	var layout = GetComponent<GridLayoutGroup>();
+	//	var cellSize = new Vector2();
+
+	//	// 現在の横幅を取得する
+	//	var width = rect.rect.width;
+	//	cellSize.x = width / 5.0f;
+	//	cellSize.y = cellSize.x;
+
+	//	layout.cellSize = cellSize;
+ //   }
+
+	// @brief  : 鍋に入れた食材の表示
+	//--------------------------------------------------------------------
+	void viewZairyous()
     {
         // 画面の座標を取得する
         Rect screen;
@@ -38,25 +56,19 @@ public class resultView : MonoBehaviour
         {
 
             Debug.Log(result.Instance.zairyo[i].sprite);
-            SpriteRenderer gobj = new GameObject("入れた材料:" + i).AddComponent<SpriteRenderer>();
-            gobj.sprite = result.Instance.zairyo[i].sprite;
+            var gobj = new GameObject("入れた材料:" + i).AddComponent<Image>();
+			gobj.rectTransform.SetParent(transform);
+			gobj.rectTransform.localScale = new Vector2(1.0f, 1.0f);
+			gobj.sprite = result.Instance.zairyo[i].sprite;
 
-            Vector2 init_pos = new Vector2();
-            init_pos.x = offset_x * gobj.bounds.size.x + screen.x + gobj.bounds.size.x * (0.5f + (float)(i % 5));
-            init_pos.y = offset_y * gobj.bounds.size.y + screen.y - gobj.bounds.size.x * (0.5f + (float)(i / 5));
-            Vector3 pos = new Vector3(init_pos.x, init_pos.y, 1.0f);
-
-            gobj.transform.position = pos;
 
             //TODO 材料がルールにあっていなかったら×印をつける
-            // とりあえずi%2==0 なら×印つけてみる
             if (result.Instance.zairyo[i].is_rule == false)
             {
-                SpriteRenderer gobj2 = new GameObject("×").AddComponent<SpriteRenderer>();
-                gobj2.sprite = result.Instance.zairyo[0].sprite;
-
-                gobj2.transform.position = new Vector3(pos.x, pos.y, 1.0f);
-                gobj2.sortingOrder = 1;
+                var gobj2 = new GameObject("×").AddComponent<Image>();
+				gobj2.rectTransform.SetParent(transform);
+				gobj2.rectTransform.localScale = new Vector2(1.0f, 1.0f);
+				gobj2.sprite = result.Instance.zairyo[0].sprite;
             }
         }
     }
