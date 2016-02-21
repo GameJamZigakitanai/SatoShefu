@@ -9,11 +9,14 @@ public class nabe : MonoBehaviour {
 	[SerializeField]
 	private limitNabeHaveZairyou limit; // リミット
 
+	private List<zairyou> zairyou;
+
 	// @brief  : 初期化
 	//--------------------------------------------------------------------
 	void Awake()
 	{
 		result.Instance.ResetOnGame();
+		zairyou = new List<zairyou>();
 	}
 
 	// @brief  : 材料が入ったなら
@@ -24,21 +27,24 @@ public class nabe : MonoBehaviour {
 		if (limit.IsEnd) return;
 		_zairyou.SetActive(false);
 		_zairyou.transform.parent = transform;
-		limit.Dec();
+		zairyou.Add(_zairyou.GetComponent<zairyou>());
+		_zairyou.SetActive(false);
+        limit.Dec();
+
 		if (limit.IsEnd)
 		{
-			var zairyos = GetComponentsInChildren<zairyou>();
+			Debug.Log(zairyou.Count);
 			int score = 0;
-			result.ZAIRYO[] data = new result.ZAIRYO[zairyos.Length];
+			result.ZAIRYO[] data = new result.ZAIRYO[zairyou.Count];
 
-			for (int i=0; i < zairyos.Length; ++i)
+			for (int i=0; i < zairyou.Count; ++i)
 			{
 				// スコア計算
-				score = zairyos[i].Score;
+				score = zairyou[i].Score;
 
 				// 材料リストの作成
-				data[i].is_rule = zairyos[i].ISRule;
-				data[i].sprite = zairyos[i].gameObject.GetComponent<SpriteRenderer>().sprite;
+				data[i].is_rule = zairyou[i].ISRule;
+				data[i].sprite = zairyou[i].gameObject.GetComponent<SpriteRenderer>().sprite;
 			}
 
 			// Set

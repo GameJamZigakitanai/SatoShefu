@@ -75,6 +75,11 @@ using System.Collections.ObjectModel;    //(for ReadOnlyCollection)
 	public void SetOnEndGame(int _score, ZAIRYO[] _zairyo)
 	{
 		score = _score;
-		zairyo = _zairyo;
+		zairyo = new ZAIRYO[_zairyo.Length];
+		for (int i =0; i<_zairyo.Length; ++i)
+		{
+			zairyo[i].is_rule = _zairyo[i].is_rule;
+			zairyo[i].sprite = _zairyo[i].sprite;
+		}
 	}
 }
