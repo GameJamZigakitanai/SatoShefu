@@ -58,7 +58,8 @@ MonoBehaviour:
   width_tile: 4
   height_tile: 4
   margin_tile_to_tile: 0.07
-  prefab: {fileID: 142818, guid: 8dc815bc05a3c174f965fddbe41b9f71, type: 2}
+  prefab: {fileID: 142818, guid: 13f4dd85d61884a1fade672428e840af, type: 2}
+  prefab2: {fileID: 142818, guid: 9cf4e068618f049188b20d48fcbc86cb, type: 2}
 --- !u!114 &11469710
 MonoBehaviour:
   m_ObjectHideFlags: 1
