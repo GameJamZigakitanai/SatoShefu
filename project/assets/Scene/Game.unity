@@ -658,6 +658,14 @@ Prefab:
       propertyPath: Text
       value: 
       objectReference: {fileID: 533877636}
+    - target: {fileID: 11469668, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 142818, guid: 13f4dd85d61884a1fade672428e840af, type: 2}
+    - target: {fileID: 11469668, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
+      propertyPath: prefab2
+      value: 
+      objectReference: {fileID: 142818, guid: 9cf4e068618f049188b20d48fcbc86cb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: efc74b4ed560643f39a4deb496493b4e, type: 2}
   m_IsPrefabParent: 0
