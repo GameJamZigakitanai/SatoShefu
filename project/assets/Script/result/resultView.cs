@@ -4,6 +4,7 @@ using System.Collections;
 
 public class resultView : MonoBehaviour
 {
+	public Sprite batu;
 
     private float offset_x = 0.25f;
     private float offset_y = -4.25f;
@@ -66,7 +67,8 @@ public class resultView : MonoBehaviour
             if (result.Instance.zairyo[i].is_rule == false)
             {
                 var gobj2 = new GameObject("×").AddComponent<Image>();
-				gobj2.rectTransform.SetParent(transform);
+				gobj2.sprite = batu;
+                gobj2.rectTransform.SetParent(transform);
 				gobj2.rectTransform.localScale = new Vector2(1.0f, 1.0f);
 				gobj2.sprite = result.Instance.zairyo[0].sprite;
             }
