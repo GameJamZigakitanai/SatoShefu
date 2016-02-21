@@ -29,22 +29,15 @@ public class tileFactory : MonoBehaviour
 	void Awake()
 	{
 		zairyou = GetComponent<zairyouFactory>();
-		enabled = false;
-	}
-
-	// @brief  : 初期化
-	//--------------------------------------------------------------------
-	void OnEnable()
-	{
 		// 画面の座標を取得する
 		Rect screen;
 		{
 			var camera = Camera.main;
-			Vector2 left_bottom  = camera.ViewportToWorldPoint(Vector3.zero);
+			Vector2 left_bottom = camera.ViewportToWorldPoint(Vector3.zero);
 			Vector2 right_top = camera.ViewportToWorldPoint(Vector3.one);
-            Vector2 screen_size = new Vector2(right_top.x-left_bottom.x,left_bottom.y - right_top.y);
+			Vector2 screen_size = new Vector2(right_top.x - left_bottom.x, left_bottom.y - right_top.y);
 
-			screen = new Rect(new Vector2(left_bottom.x,right_top.y), screen_size);
+			screen = new Rect(new Vector2(left_bottom.x, right_top.y), screen_size);
 		}
 
 		// タイルの大きさを作る
@@ -59,7 +52,7 @@ public class tileFactory : MonoBehaviour
 		Vector2 init_pos = new Vector2();
 		init_pos.x = margin_tile_to_tile + screen.x + size.x * 0.5f;
 		init_pos.y = screen.y - margin_tile_to_tile - start_y - size.y * 0.5f;
-        Vector2 pos = new Vector2(init_pos.x,init_pos.y);
+		Vector2 pos = new Vector2(init_pos.x, init_pos.y);
 
 		// 左上から生成していく
 		for (int y = 0; y < height_tile; ++y)
@@ -69,10 +62,10 @@ public class tileFactory : MonoBehaviour
 				Create(pos);
 				var new_zairyou = zairyou.Create();
 				new_zairyou.transform.position = pos;
-                pos.x += size.x + margin_tile_to_tile;
+				pos.x += size.x + margin_tile_to_tile;
 			}
 			pos.y -= size.y + margin_tile_to_tile;
-			pos.x  = init_pos.x;
+			pos.x = init_pos.x;
 		}
 
 		bottom = pos.y;

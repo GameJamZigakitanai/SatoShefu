@@ -4,31 +4,20 @@ using System.Collections.Generic;
 
 public class nabe : MonoBehaviour {
 
-    // メンバ変数
-    //--------------------------------------------------------------------
-    [SerializeField]
-    // 鍋に入れた材料の配列（ゲームオブジェクトで持つ）
-    private List<GameObject> zairyous = new List<GameObject>();
+	// メンバ変数
+	//--------------------------------------------------------------------
+	[SerializeField]
+	private limitNabeHaveZairyou limit; // リミット
 
-    // 初期化
-    //--------------------------------------------------------------------
-    void Start () {
-	
+	// @brief  : 材料が入ったなら
+	//         : zairyou
+	//--------------------------------------------------------------------
+	public void DropZairyou(GameObject _zairyou)
+	{
+		if (limit.IsEnd) return;
+		_zairyou.SetActive(false);
+		_zairyou.transform.parent = transform;
+		limit.Dec();
+		if (limit.IsEnd) sceneManager.NextScene("Result");
 	}
-
-    // update
-    //--------------------------------------------------------------------
-    void Update () {
-	
-	}
-
-    // 材料を入れ込む処理
-    //--------------------------------------------------------------------
-    void InsertZairyou(GameObject gobj)
-    {
-        // 衝突したオブジェクトを追加する
-        zairyous.Add(gobj);
-        // 材料を追加したことを通知する処理
-        // TODO SendMessage("");
-    }
 }

@@ -31,7 +31,7 @@ public class dragZairyou : MonoBehaviour
 		// 鍋に入るか
 		if (transform.position.y < tile.Bottom)
 		{
-			gameObject.transform.parent = nabe.transform;
+			nabe.DropZairyou(gameObject);
 			var new_zairyou = zairyou.Create();
 			new_zairyou.transform.position = pos_old;
 		}

@@ -24,13 +24,6 @@ public class zairyouFactory : MonoBehaviour {
 
 		rule_object = new List<GameObject>();
 
-		enabled = false;
-	}
-
-	// @brief  : 初期化
-	//--------------------------------------------------------------------
-	void OnEnable ()
-	{
 		// ルールに沿った材料のリストを作成
 		foreach (var i in prefabs)
 		{
@@ -40,7 +33,7 @@ public class zairyouFactory : MonoBehaviour {
 
 		// タイルファクトリをenableにする
 		GetComponent<tileFactory>().enabled = true;
-    }
+	}
 
 	// @brief  : 適当に作成
 	//--------------------------------------------------------------------
