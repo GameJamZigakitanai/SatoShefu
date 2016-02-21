@@ -23,12 +23,12 @@ using System.Collections.ObjectModel;    //(for ReadOnlyCollection)
 
     //スコアランクの点数
     public static readonly ReadOnlyCollection<int> SCORERANKS = Array.AsReadOnly(new int[] {
-        100,    //以下ならくそまずい
-        200,    //まずい
-        300,    //微妙
-        400,    //普通
-        500,    //おいしい
-        600    //超美味しい
+        10,    //以下ならくそまずい
+        20,    //まずい
+        30,    //微妙
+        40,    //普通
+        50,    //おいしい
+        60    //超美味しい
     });
 
     // プロパティ
