@@ -244,6 +244,24 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1852852038}
+    - target: {fileID: 11420134, guid: 3b37883e147f435408df2e10876746ec, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c389f71801667c64e8a10f560e893860,
+        type: 3}
+    - target: {fileID: 11488288, guid: 3b37883e147f435408df2e10876746ec, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 81056f68d970dc64f892f671ea2323c4,
+        type: 3}
+    - target: {fileID: 22402742, guid: 3b37883e147f435408df2e10876746ec, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 22402742, guid: 3b37883e147f435408df2e10876746ec, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b37883e147f435408df2e10876746ec, type: 2}
   m_IsPrefabParent: 0
