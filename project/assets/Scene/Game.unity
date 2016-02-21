@@ -1968,6 +1968,8 @@ GameObject:
   - 124: {fileID: 2145328653}
   - 114: {fileID: 2145328652}
   - 114: {fileID: 2145328657}
+  - 114: {fileID: 2145328659}
+  - 114: {fileID: 2145328658}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2060,3 +2062,28 @@ MonoBehaviour:
   zairyou: {fileID: 1408339313}
   tile: {fileID: 1408339314}
   nabe: {fileID: 381241605}
+--- !u!114 &2145328658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2145328651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aaf7def195ffcc43be5e5320ac6b6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 2145328659}
+--- !u!114 &2145328659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2145328651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4782efdc1e5674157ac1b5bfb4c058ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 18165b99df15ef648a94d7140647716a, type: 3}
+  pitch: 0

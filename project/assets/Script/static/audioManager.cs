@@ -21,6 +21,7 @@ public class BGM
     //--------------------------------------------------------------------
 	private AudioSource source;     // ソース
     private STATE state = STATE.STOP;            // 現在のステータス
+
     public  string name             // 名前
     {
         get
@@ -66,7 +67,6 @@ public class BGM
     {
         if(!source) return;
         if(state == STATE.PLAY) return;
-        source.enabled = true;
         volume = 1.0f;
         if(state != STATE.FADE_IN) source.Play();
         state = STATE.PLAY;
@@ -80,7 +80,6 @@ public class BGM
         if(source.isPlaying) source.Stop();
         state = STATE.STOP;
         volume = 0.0f;
-        source.enabled = false;
     }
 
     // @brief  : フェードイン
@@ -88,7 +87,6 @@ public class BGM
     public void FadeIn()
     {
         if(!source) return;
-        source.enabled = true;
         volume = 0.0f;
         source.Play();
         state  = STATE.FADE_IN;
@@ -100,7 +98,6 @@ public class BGM
     public void FadeOut()
     {
         if(!source) return;
-        source.enabled = true;
         state = STATE.FADE_OUT;
         audioManager.Instance.enabled = true;
     }
@@ -113,8 +110,7 @@ public class BGM
     {
         source = _source;
         source.Stop();
-        volume = 0.0f;        
-        source.enabled = false;
+        volume = 0.0f;
     }
 };
 
@@ -152,7 +148,7 @@ public class SE
     //--------------------------------------------------------------------
     public void Play()
     {
-        //Debug.Log(name + " is Play");
+        Debug.Log(name + " is Play");
         if(!source) return;
         source.enabled = true;
         source.volume = 1.0f;
@@ -259,8 +255,8 @@ public class audioManager : TempSingletonMonoBehaviour<audioManager> {
     //--------------------------------------------------------------------
     private BGM LoadBackGroundMusic(AudioClip clip, float pitch)
     {
-        // 正式名
-        string name = clip.name + "(" + pitch.ToString();
+		// 正式名
+		string name = clip.name;//+ "(" + pitch.ToString();
         
         // 名前から検索
         foreach( var i in bgmList )
@@ -275,7 +271,7 @@ public class audioManager : TempSingletonMonoBehaviour<audioManager> {
         // AudioSource設定
         newSource.clip        = Object.Instantiate(clip);
         newSource.loop        = true;
-        newSource.playOnAwake = false;
+        newSource.playOnAwake = true;
         
         // AudioSourceにあるclipの名前を書き換える
         newSource.clip.name = name;
@@ -298,9 +294,9 @@ public class audioManager : TempSingletonMonoBehaviour<audioManager> {
     // @return : 再生用クラス
     //--------------------------------------------------------------------
     private SE LoadSoundEffect(AudioClip clip, float pitch)
-    {   
-        // 正式名
-        string name = clip.name + "(" + pitch.ToString();
+    {
+		// 正式名
+		string name = clip.name;//+ "(" + pitch.ToString();
         
         // 名前から検索
         foreach( var i in seList )
@@ -316,7 +312,7 @@ public class audioManager : TempSingletonMonoBehaviour<audioManager> {
         newSource.clip        = Object.Instantiate(clip);
         newSource.loop        = false;
         newSource.playOnAwake = false;
-        
+		
         // AudioSourceにあるclipの名前を書き換える
         newSource.clip.name = name;
         
