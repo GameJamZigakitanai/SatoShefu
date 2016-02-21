@@ -62,6 +62,9 @@ public class rule : MonoBehaviour {
 		{
 			sub[i] = CreateRule(subScore[i]);
 		}
+		enabled = true;
+
+		GetComponent<zairyouFactory>().enabled = true;
 	}
 
 	// @brief  : 初期化

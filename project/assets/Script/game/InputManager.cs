@@ -3,70 +3,25 @@ using System.Collections;
 
 public class InputManager : MonoBehaviour
 {
-	private bool draggingItem = false;
-	private GameObject draggedObject;
-	private Vector2 touchOffset;
+	// メンバ変数
+	//--------------------------------------------------------------------
+	[SerializeField]
+	private zairyouFactory zairyou;     // 材料ファクトリ
+	[SerializeField]
+	private tileFactory       tile;     // タイルファクトリ
+	[SerializeField]
+	private nabe	   	nabe;     // 鍋
 
-	/*
-	static public string[] ingredients = new string[] {
-		"beef",
-		"carrot",
-		"chicken",
-		"honey",
-		"mushroom",
-		"onion",
-		"pork",
-		"potato",
-		"shrimp",
-		"spice",
-		"tomato"
-	};
-	*/
-
-	//日本語がstringとして認識できない
-
-	static public int score;
-
-	static public string[] ingredients = new string[] {
-		"牛肉",
-		"にんじん",
-		"鶏肉",
-		"ハチミツ",
-		"きのこ",
-		"玉葱",
-		"豚肉",
-		"じゃがいも",
-		"えび",
-		"とうがらし",
-		"トマト"
-	};
-
-	static public string[] tagIngre = new string[] {
-		"肉",
-		"野菜",
-		"肉",
-		"甘い",
-		"野菜",
-		"野菜",
-		"肉",
-		"野菜",
-		"肉",
-		"辛い",
-		"野菜"
-	};
-
+	private dragZairyou draggedObject;		// ドラックするオブジェクト
+	private Vector2 touchOffset;		// オフセット
 
 	private bool drag;
 	Vector3 oldPosition;
-	tileItem tempTile;
+	zairyou tempTile;
 
-	private tileFactory tileFactory;
-
-	void Start()
+	void Awake()
 	{
 		drag = false;
-		score = 0;
-		tileFactory = GameObject.Find ("PanelTile").GetComponent<tileFactory> ();
 	}
 
 	void Update ()
@@ -77,27 +32,15 @@ public class InputManager : MonoBehaviour
 		}
 		else
 		{
-			if (drag) {
+			if (drag)
+			{
 				drag = !drag;
 				DropItem ();
-				/*
-				if (draggedObject.transform.position.y < tileFactory.Bottom) {
-					draggingItem = false;
-					tempTile = draggedObject.GetComponent<tileItem>();
-					Debug.Log(tempTile.number);
-
-					//Destroy (draggedObject);
-					Debug.Log (oldPosition);
-				} else {
-					draggedObject.transform.position = oldPosition;
-					if (draggingItem)
-						DropItem();
-				}
-				*/
 			}
 
 		}
 	}
+
 	Vector2 CurrentTouchPosition
 	{
 		get
@@ -105,10 +48,11 @@ public class InputManager : MonoBehaviour
 			return Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		}
 	}
+
 	private void DragOrPickUp()
 	{
 		var inputPosition = CurrentTouchPosition;
-		if (draggingItem)
+		if (draggedObject)
 		{
 			if (!drag) {
 				drag = !drag;
@@ -125,10 +69,12 @@ public class InputManager : MonoBehaviour
 				var hit = touches[0];
 				if (hit.transform != null)
 				{
-					draggingItem = true;
-					draggedObject = hit.transform.gameObject;
+					var obj = hit.transform.gameObject;
+					draggedObject = obj.AddComponent<dragZairyou>();
+					draggedObject.Zairyou = zairyou;
+					draggedObject.Tile = tile;
+					draggedObject.Nabe = nabe;
 					touchOffset = (Vector2)hit.transform.position - inputPosition;
-					draggedObject.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
 				}
 			}
 		}
@@ -137,22 +83,11 @@ public class InputManager : MonoBehaviour
 	{
 		get
 		{
-			// returns true if either the mouse button is down or at least one touch is felt on the screen
 			return Input.GetMouseButton(0);
 		}
 	}
 	void DropItem()
 	{
-		draggingItem = false;
-		draggedObject.transform.localScale = new Vector3(1.5f, 1.5f, 1);
-		Debug.Log (draggedObject.transform.position.y + ", " + tileFactory.Bottom);
-		if (draggedObject.transform.position.y < tileFactory.Bottom) {
-			tempTile = draggedObject.GetComponent<tileItem>();
-			int tempNum = Random.Range (0, InputManager.ingredients.Length-1);
-			Debug.Log (tempNum);
-			tempTile.tag = InputManager.ingredients[tempNum];
-			tempTile.GetComponent<SpriteRenderer> ().sprite = Resources.Load("ingredients/"+InputManager.ingredients[tempNum], typeof(Sprite)) as Sprite;
-		}
-		draggedObject.transform.position = oldPosition;
+		draggedObject.OnDrop();
 	}
 }

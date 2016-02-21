@@ -16,12 +16,9 @@ public class tileFactory : MonoBehaviour
 	private float margin_tile_to_tile;  // タイルとタイルの間の幅
 	[SerializeField]
 	private GameObject prefab;          // タイルのプレハブ
-	[SerializeField]
-	private GameObject prefab2;          // タイルのプレハブ
 
-	private float bottom;          // 最下
-
-	private int numberOfTiles;
+	private float bottom;				// 最下
+	private zairyouFactory zairyou;         // 材料工場
 
 	// プロパティ
 	//--------------------------------------------------------------------
@@ -29,9 +26,16 @@ public class tileFactory : MonoBehaviour
 
 	// @brief  : 初期化
 	//--------------------------------------------------------------------
-	void Start()
+	void Awake()
 	{
-		numberOfTiles = 0;
+		zairyou = GetComponent<zairyouFactory>();
+		enabled = false;
+	}
+
+	// @brief  : 初期化
+	//--------------------------------------------------------------------
+	void OnEnable()
+	{
 		// 画面の座標を取得する
 		Rect screen;
 		{
@@ -63,17 +67,15 @@ public class tileFactory : MonoBehaviour
 			for (int x = 0; x < width_tile; ++x)
 			{
 				Create(pos);
-				//Debug.Log (numberOfTiles);
-				pos.x += size.x + margin_tile_to_tile;
+				var new_zairyou = zairyou.Create();
+				new_zairyou.transform.position = pos;
+                pos.x += size.x + margin_tile_to_tile;
 			}
 			pos.y -= size.y + margin_tile_to_tile;
 			pos.x  = init_pos.x;
 		}
 
 		bottom = pos.y;
-			
-		// 役割が終わったので消える
-		Destroy(this);
 	}
 
 	// @brief  : タイルを生成する
@@ -81,27 +83,9 @@ public class tileFactory : MonoBehaviour
 	//--------------------------------------------------------------------
 	public void Create(Vector2 _pos)
 	{
+		Vector3 pos = _pos;
 		GameObject new_tile = GameObject.Instantiate(prefab);
-		GameObject new_tile2 = GameObject.Instantiate(prefab2);
-		tileItem temp = new_tile.GetComponent<tileItem>();
-		temp.number = numberOfTiles;
-		int tempNum = Random.Range (0, InputManager.ingredients.Length-1);
-		//Debug.Log (tempNum);
-		temp.tag = InputManager.ingredients[tempNum];
-		temp.GetComponent<SpriteRenderer> ().sprite = Resources.Load("ingredients/"+InputManager.ingredients[tempNum], typeof(Sprite)) as Sprite;
-		numberOfTiles = numberOfTiles + 1;
 		new_tile.transform.parent = this.transform;
-		new_tile.transform.position = _pos;
-		new_tile2.transform.parent = this.transform;
-		new_tile2.transform.position = _pos;
+		new_tile.transform.position = pos;
 	}
-
-	/*
-	private void CreateNabe(Vector2 _pos)
-	{
-		var new_tile = GameObject.Instantiate(nabe);
-		new_tile.transform.parent = this.transform;
-		new_tile.transform.position = _pos;
-	}
-	*/
 }

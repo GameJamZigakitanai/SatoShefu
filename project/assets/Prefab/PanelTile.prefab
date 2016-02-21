@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11469710}
   - 114: {fileID: 11469668}
   - 114: {fileID: 11466642}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PanelTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -36,20 +36,30 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114750}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd672ffd0fcd5ea4f9ce05cb339981f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min_rule_zairyou: 0
-  prefabs: []
+  min_rule_zairyou: 3
+  prefabs:
+  - {fileID: 135054, guid: d122fa240563cdd42bed19fe027731a7, type: 2}
+  - {fileID: 107524, guid: 86767423f4d242540861bcdde7318e3a, type: 2}
+  - {fileID: 100866, guid: b297ecf4165788b4cb267eae81ecf720, type: 2}
+  - {fileID: 164566, guid: e0a8b9180f491bc45937a457b37b97ff, type: 2}
+  - {fileID: 155754, guid: c6d727614b537a44480e68f342009fa7, type: 2}
+  - {fileID: 128252, guid: 9bb9b227632c9eb48a5bab15af334d2c, type: 2}
+  - {fileID: 131254, guid: f9625b26ca68bd44280bdcc8d622d7cc, type: 2}
+  - {fileID: 120912, guid: a1fdc740c68193a47aa15a80ff05ff3e, type: 2}
+  - {fileID: 106058, guid: 0703de08d6972794e96cedbd0bb37681, type: 2}
+  - {fileID: 141704, guid: 5fcdbd3195816904ba7d3832585699bc, type: 2}
 --- !u!114 &11469668
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114750}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72a25455a5091e2479a3321fb864dc06, type: 3}
   m_Name: 
@@ -57,9 +67,8 @@ MonoBehaviour:
   start_y: 2
   width_tile: 4
   height_tile: 4
-  margin_tile_to_tile: 0.07
-  prefab: {fileID: 142818, guid: 13f4dd85d61884a1fade672428e840af, type: 2}
-  prefab2: {fileID: 142818, guid: 9cf4e068618f049188b20d48fcbc86cb, type: 2}
+  margin_tile_to_tile: 0.075
+  prefab: {fileID: 142818, guid: 9cf4e068618f049188b20d48fcbc86cb, type: 2}
 --- !u!114 &11469710
 MonoBehaviour:
   m_ObjectHideFlags: 1

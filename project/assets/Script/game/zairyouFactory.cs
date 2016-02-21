@@ -13,21 +13,33 @@ public class zairyouFactory : MonoBehaviour {
 
 	private rule clear_rule;				// 条件クラス
 	private List<GameObject> rule_object;	// 条件に合ったオブジェクト
-	private int  rule_zairyou_count;		// ルールに沿った材料が、いまある数
+	private int  rule_zairyou_count;        // ルールに沿った材料が、いまある数
 
 	// @brief  : 初期化
 	//--------------------------------------------------------------------
-	void Awake ()
+	void Awake()
 	{
 		// 条件コンポーネントの取得
 		clear_rule = GetComponent<rule>();
 
+		rule_object = new List<GameObject>();
+
+		enabled = false;
+	}
+
+	// @brief  : 初期化
+	//--------------------------------------------------------------------
+	void OnEnable ()
+	{
 		// ルールに沿った材料のリストを作成
 		foreach (var i in prefabs)
 		{
 			var script = i.GetComponent<zairyou>();
 			if (clear_rule.CheakIsScore(script)) rule_object.Add(i);
 		}
+
+		// タイルファクトリをenableにする
+		GetComponent<tileFactory>().enabled = true;
     }
 
 	// @brief  : 適当に作成
